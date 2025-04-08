@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tech Quiz - JavaScript Scope</title>
+</head>
+<body>
+  <h2>Tech Trivia Quiz — Check Your Console!</h2>
+
+  <script>
+
+    // 🌐 Global score variable
+    var score = 0;
+
+    // 🧠 Function Declaration (hoisted)
+    function questionOne() {
+      var answer = prompt("Q1: Who founded Microsoft?");
+      var correct = "bill gates";
+
+      if (answer.trim().toLowerCase() === correct) {
+        score++;
+        console.log("✅ Correct!");
+      } else {
+        console.log("❌ Wrong! Correct Answer: Bill Gates");
+      }
+
+      // Local variable (cannot access this outside)
+      var questionScore = 1;
+    }
+
+    // ❓ Function Expression (not hoisted)
+    const questionTwo = function() {
+      var answer = prompt("Q2: What does API stand for?");
+      var correct = "application programming interface";
+
+      if (answer.trim().toLowerCase() === correct) {
+        score++;
+        console.log("✅ Correct!");
+      } else {
+        console.log("❌ Wrong! Correct Answer: Application Programming Interface");
+      }
+    };
+
+    // ⚠️ Hoisting Example: using var before declaration
+    console.log("Testing Hoisting: osUsed =", osUsed); // undefined
+    var osUsed = "Linux";
+
+    // 📘 Another Function Declaration
+    function questionThree() {
+      var answer = prompt("Q3: Which company develops the Chrome browser?");
+      var correct = "google";
+
+      if (answer.trim().toLowerCase() === correct) {
+        score++;
+        console.log("✅ Correct!");
+      } else {
+        console.log("❌ Wrong! Correct Answer: Google");
+      }
+    }
+
+    // ▶️ Start the quiz
+    questionOne();
+    questionTwo();
+    questionThree();
+
+    // 🎯 Final Score
+    console.log("🎯 Final Tech Score:", score);
+
+    // 🎁 Bonus: Accessing local variable outside its scope
+    function reviewScore() {
+      try {
+        console.log("Trying to access questionScore outside:", questionScore);
+      } catch (error) {
+        console.log("🚫 Error: 'questionScore' is not accessible here -", error.message);
+      }
+    }
+
+    reviewScore();
+  </script>
+</body>
+</html>
